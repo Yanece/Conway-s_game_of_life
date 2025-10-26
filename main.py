@@ -4,7 +4,6 @@ import time
 
 
 def compute_number_neighbors(padded_frame, row_index, col_index):
-    """Compute the number of live neighbors for a given cell."""
     neighborhood = padded_frame[
         row_index - 1 : row_index + 2, col_index - 1 : col_index + 2
     ]
@@ -13,7 +12,6 @@ def compute_number_neighbors(padded_frame, row_index, col_index):
 
 
 def compute_next_frame(frame):
-    """Compute the next generation based on Game of Life rules."""
     padded_frame = np.pad(frame, 1, mode="constant")
     new_frame = np.zeros_like(frame)
 
