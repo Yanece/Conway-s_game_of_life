@@ -1,5 +1,5 @@
-# Conway-s_game_of_life
-# Conway's Game of Life – Python
+
+# Conway's Game of Life in Python
 
 ## Objectif
 Simuler le Jeu de la Vie de Conway sur une grille 7x7 en Python.
