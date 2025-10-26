@@ -7,8 +7,7 @@ def compute_number_neighbors(padded_frame, row_index, col_index):
     neighborhood = padded_frame[
         row_index - 1 : row_index + 2, col_index - 1 : col_index + 2
     ]
-    number_neighbors = np.sum(neighborhood) - padded_frame[row_index, col_index]
-    return number_neighbors
+    return np.sum(neighborhood) - padded_frame[row_index, col_index]
 
 
 def compute_next_frame(frame):
@@ -27,6 +26,12 @@ def compute_next_frame(frame):
     return new_frame
 
 
+def print_grid_ascii(frame):
+    for row in frame:
+        line = "".join("■" if cell else "·" for cell in row)
+        print(line)
+
+
 frame = np.array(
     [
         [0, 0, 0, 0, 0, 0, 0],
@@ -39,7 +44,12 @@ frame = np.array(
     ]
 )
 
-print("init_Game_of_Life_grid:")
-print(frame)
-print("Next_generation:")
-print(compute_next_frame(frame))
+generation_number = 0
+
+while True:
+    os.system("cls" if os.name == "nt" else "clear")
+    print(f"Generation {generation_number}:")
+    print_grid_ascii(frame)
+    time.sleep(0.8)
+    frame = compute_next_frame(frame)
+    generation_number += 1
